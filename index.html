@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>image modal</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+<style>
+    .modal-img {width:400px; height:400px; cursor:pointer;}
+    .pictures {display:grid; grid-template-columns: 1fr 1fr 1fr;}
+    .modal-container{position:absolute; width:70%; height:60%; background-color: #fff; top:15%; left:15%; box-shadow:2px 2px 5px #000; border-radius: 20px; border:none; display: none; animation: show ease-in 0.5s; padding:40px;}
+    .close{font-size: 30px; position: absolute; right:20px; top:10px; cursor:pointer; color:#000; z-index:1000;}
+    .modal-content{position:relative; height:100%;}
+    .modal-content-img {width:100%;height:100%; position: absolute;}
+    @keyframes show {
+        0% {scale: 0.1}
+        100% {scale:1}
+    }
+</style>
+
+</head>
+<body>
+    <div class="page-container">
+        <div class="modal-container">
+            <i class="fas fa-times close"></i>
+            <div class="modal-content">
+                <img class="modal-content-img"src="" alt="">
+            </div>
+        </div>
+        <h1>JS MODAL</h1>
+
+        <div class="pictures">
+            <div class="modal">
+                <img class="modal-img" src="./images/1xbetc.jpg" alt="">
+            </div>
+            <div class="modal">
+                <img class="modal-img" src="./images/ball.png" alt="">
+            </div>
+            <div class="modal">
+                <img class="modal-img" src="./images/fifaball.jpg" alt="">
+            </div>
+            <div class="modal">
+                <img class="modal-img" src="./images/p.jpg" alt="">
+            </div>
+            <div class="modal">
+                <img class="modal-img" src="./images/resale.jpg" alt="">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let modalImg = document.querySelectorAll(".modal-img");
+        let modalContentImg = document.querySelector(".modal-content-img");
+        let modal = document.querySelector(".modal-container");
+        let closeBtn = document.querySelector(".close");
+
+        closeBtn.addEventListener("click", function(){
+            modal.style.display= "none";
+        });
+
+        for (let index = 0; index < modalImg.length; index++){
+            modalImg[index].addEventListener("click", function(e){
+                let currentModalImage = e.target.src;
+                modalContentImg.src = currentModalImage;
+                modal.style.display = "block";
+            })
+        }
+    </script>
+</body>
+</html>
